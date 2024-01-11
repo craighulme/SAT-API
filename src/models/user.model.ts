@@ -1,20 +1,8 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
-
-@Entity()
-export class User {
-
-  @PrimaryGeneratedColumn()
+export interface User {
   id: number;
-
-  @Column({ type: 'varchar', length: 200 })
   name: string;
-
-  @Column({ type: 'varchar', length: 200, unique: true })
   email: string;
-
-  @Column({ type: 'date' })
+  token: string;
   registrationDate: Date;
-
-  @Column({ type: 'date' })
   lastActiveDate: Date;
 }

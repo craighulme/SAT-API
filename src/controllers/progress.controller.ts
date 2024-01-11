@@ -14,7 +14,7 @@ export class ProgressController {
       const progress = await this.progressService.getUserProgress(userId);
       res.status(200).json(progress);
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      res.status(500).json({ error: 500 });
     }
   }
 
@@ -26,7 +26,7 @@ export class ProgressController {
       await this.progressService.updateMasteryScore(userId, topicId, newScore);
       res.status(200).json({ message: 'Mastery score updated successfully.' });
     } catch (error) {
-      res.status(500).json({ error: error.message });
+      res.status(500).json({ error: 500 });
     }
   }
 }

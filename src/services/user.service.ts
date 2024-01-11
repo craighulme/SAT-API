@@ -1,14 +1,14 @@
 import { User } from '../models/user.model';
-import { db } from '../database/connection';
+import db from '../database/connection';
 
 export class UserService {
   async registerUser(user: User): Promise<User> {
-    const result = await db('User').insert(user).returning('*');
-    return result[0];
+    const [newUser] = await db('User').insert(user).returning('*');
+    return newUser;
   }
 
-  async getUserProfile(userId: string): Promise<User> {
-    const user = await db('User').where({ userId }).first();
+  async getUserProfile(id: string): Promise<User> {
+    const user = await db('User').where({ id }).first();
     return user;
   }
 }

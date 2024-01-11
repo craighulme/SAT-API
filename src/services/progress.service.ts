@@ -1,5 +1,5 @@
 import { Progress } from '../models/progress.model';
-import { db } from '../database/connection';
+import  db  from '../database/connection';
 
 export class ProgressService {
   async getUserProgress(userId: string): Promise<Progress[]> {

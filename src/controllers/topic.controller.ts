@@ -14,17 +14,17 @@ export class TopicController {
       const topics = await this.topicService.getTopicList(subjectArea);
       res.json(topics);
     } catch (error) {
-      res.status(500).send(error.message);
+      res.status(500).send(500);
     }
   };
 
   public selectTopicForStudy = async (req: Request, res: Response): Promise<void> => {
     try {
-      const userId = req.params.userId;
-      const topic = await this.topicService.selectTopicForStudy(userId);
+      const topicID = req.params.topicID;
+      const topic = await this.topicService.getTopicById(topicID);
       res.json(topic);
     } catch (error) {
-      res.status(500).send(error.message);
+      res.status(500).send(500);
     }
   };
 }

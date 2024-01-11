@@ -1,21 +1,21 @@
 import { Topic } from '../models/topic.model';
-import { database } from '../database/connection';
+import db from '../database/connection';
 
 export class TopicService {
   async getTopicList(subjectArea: string): Promise<Topic[]> {
     try {
-      const topics = await database('Topic')
+      const topics = await db('Topic')
         .where({ subjectArea })
         .select('*');
       return topics;
     } catch (error) {
-      throw new Error(`Failed to get topics: ${error.message}`);
+      throw new Error(`Failed to get topics: ${error}`);
     }
   }
 
   async getTopicById(topicId: string): Promise<Topic> {
     try {
-      const topic = await database('Topic')
+      const topic = await db('Topic')
         .where({ topicId })
         .first();
       if (!topic) {
@@ -23,7 +23,7 @@ export class TopicService {
       }
       return topic;
     } catch (error) {
-      throw new Error(`Failed to get topic: ${error.message}`);
+      throw new Error(`Failed to get topic: ${error}`);
     }
   }
 }

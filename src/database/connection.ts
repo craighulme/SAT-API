@@ -1,17 +1,13 @@
-import mysql from 'mysql2/promise';
+import knex from 'knex';
 
-let connection;
-
-async function connectToDatabase() {
-  if (!connection) {
-    connection = await mysql.createConnection({
-      host: 'localhost',
-      user: 'your-username',
-      password: 'your-password',
-      database: 'sat-preparation-system'
-    });
+const db = knex({
+  client: 'mysql2',
+  connection: {
+    host: '127.0.0.1',
+    user: 'root',
+    password: '',
+    database: 'sats'
   }
-  return connection;
-}
+});
 
-export default connectToDatabase;
+export default db;
