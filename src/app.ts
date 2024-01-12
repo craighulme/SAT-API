@@ -31,6 +31,7 @@ app.get('/user/:id', async (req, res) => {
 app.post('/user/register', userController.registerUser);
 app.get('/topics/:subject', topicController.getTopicList);
 app.get('/topics/selectForStudy/:userId', topicController.selectTopicForStudy);
+// app.get('/topics/all', topicController.getAllTopics);
 // app.post('/session', sessionController.createSession);
 app.put('/progress/:userId/:topicId', progressController.updateMasteryScore);
 app.get('/progress/:userId', progressController.getUserProgress);

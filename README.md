@@ -28,10 +28,7 @@ npm install
 
 Create a MySQL database and update the database connection settings in `src/database/connection.ts`.
 
-Run the migrations to create the necessary tables:
-```
-npm run migrate
-```
+Execute the tables.sql file into your Database. It will push the tables to your database.
 
 4. Start the server:
 ```

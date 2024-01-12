@@ -28,4 +28,15 @@ export class TopicController {
       res.status(500).send(error);
     }
   };
+
+  public getAllTopics = async (req: Request, res: Response): Promise<void> => {
+    try {
+      const topics = await this.topicService.getAllTopics();
+      res.json(topics);
+    } catch (error) {
+      console.error("Error getting all topics:", error);
+      res.status(500).send(error);
+    }
+  };
+  
 }
