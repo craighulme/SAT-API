@@ -10,8 +10,9 @@ export class TopicController {
 
   public getTopicList = async (req: Request, res: Response): Promise<void> => {
     try {
-      const subjectArea = req.params.subjectArea;
-      const topics = await this.topicService.getTopicList(subjectArea);
+      const subject = req.params.subject;
+      console.log("got subject: " +subject);
+      const topics = await this.topicService.getTopicList(subject);
       res.json(topics);
     } catch (error) {
       res.status(500).send(500);
@@ -20,11 +21,11 @@ export class TopicController {
 
   public selectTopicForStudy = async (req: Request, res: Response): Promise<void> => {
     try {
-      const topicID = req.params.topicID;
-      const topic = await this.topicService.getTopicById(topicID);
-      res.json(topic);
+      const userId = req.params.userId;
+      const topics = await this.topicService.getUserTopics(userId);
+      res.json(topics);
     } catch (error) {
-      res.status(500).send(500);
+      res.status(500).send(error);
     }
   };
 }

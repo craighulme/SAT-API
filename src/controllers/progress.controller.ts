@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { ProgressService } from '../services/progress.service';
 
 export class ProgressController {
-  private progressService: ProgressService;
+  progressService;
 
   constructor() {
     this.progressService = new ProgressService();
@@ -21,11 +21,13 @@ export class ProgressController {
   public updateMasteryScore = async (req: Request, res: Response): Promise<void> => {
     const userId = req.params.userId;
     const topicId = req.params.topicId;
-    const newScore = req.body.newScore;
+    const newScore = req.body.masteryScore;
     try {
       await this.progressService.updateMasteryScore(userId, topicId, newScore);
+      console.log("updating mastery score for UID: " + userId + " TID: " + topicId + " to " + newScore);
       res.status(200).json({ message: 'Mastery score updated successfully.' });
     } catch (error) {
+      console.log("error: updating mastery score.")
       res.status(500).json({ error: 500 });
     }
   }

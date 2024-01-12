@@ -7,8 +7,8 @@ export class UserService {
     return newUser;
   }
 
-  async getUserProfile(id: string): Promise<User> {
-    const user = await db('User').where({ id }).first();
+  public async getUserProfile(userId: string): Promise<any> {
+    const user = await db('User').where({ id: userId }).first();
     return user;
   }
 }

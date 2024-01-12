@@ -7,6 +7,7 @@ export class UserController {
   constructor() {
     this.userService = new UserService();
     this.getUserProfile = this.getUserProfile.bind(this);
+    this.registerUser = this.registerUser.bind(this);
   }
 
   public async getUserProfile(req: Request, res: Response): Promise<void> {
@@ -23,10 +24,13 @@ export class UserController {
 
   public async registerUser(req: Request, res: Response): Promise<void> {
     try {
+      console.log("registering user");
+      console.log(req.body);
       const newUser = await this.userService.registerUser(req.body);
       res.status(201).json(newUser);
     } catch (error) {
-      res.status(500).json({ message: 500 });
+      console.error("Error registering user:", error);
+      res.status(500).json({ message: "Internal Server Error" });
     }
   }
 }
