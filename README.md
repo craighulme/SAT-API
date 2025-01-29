@@ -159,13 +159,6 @@ curl http://localhost:3000/progress/1
 ```
 
 
-## Testing
-
-To run the tests, use the following command:
-```
-npm test
-```
-
 ## Contributing
 
 Please read `CONTRIBUTING.md` for details on our code of conduct, and the process for submitting pull requests to us.
